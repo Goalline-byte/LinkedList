@@ -19,7 +19,18 @@ public class LinkedList{
         }
         size += 1;
     }
-    
+
+    public void insertLast(int val){
+        if(tail == null){
+            insertFirst(val);
+            return;
+        }
+
+        Node node = new Node(val);
+        tail.next = node;
+        tail = node;
+        size++;
+    }
 
     public void display(){
         Node temp = head;
@@ -52,6 +63,8 @@ public static void main(String[] args){
     linkedList.insertFirst(6);
     linkedList.insertFirst(9);
     linkedList.insertFirst(17);
+
+    linkedList.insertLast(89);
 
     linkedList.display();
 
