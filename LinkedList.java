@@ -9,6 +9,8 @@ public class LinkedList{
         this.size = 0;
 
     }
+    
+
 
     public void insertFirst(int val){
         Node node = new Node(val);
@@ -29,6 +31,26 @@ public class LinkedList{
         Node node = new Node(val);
         tail.next = node;
         tail = node;
+        size++;
+    }
+
+    public void insert(int val, int index){
+        if(index == 0){
+            insertFirst(val);
+            return;
+
+        }
+        if(index == size){
+            insertLast(val);
+            return;
+        }
+
+        Node temp = head;
+        for(int i = 1; i < index; i++){
+            temp = temp.next;
+        }
+        Node node = new Node(val, temp.next);
+        temp.next = node;
         size++;
     }
 
@@ -65,6 +87,8 @@ public static void main(String[] args){
     linkedList.insertFirst(17);
 
     linkedList.insertLast(89);
+    linkedList.display();
+    linkedList.insert(100, 3);
 
     linkedList.display();
 
