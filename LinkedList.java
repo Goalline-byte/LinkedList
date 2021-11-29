@@ -1,4 +1,5 @@
 
+
 public class LinkedList{
     private Node head;
     private Node tail;
@@ -54,6 +55,52 @@ public class LinkedList{
         size++;
     }
 
+    public int deleteFirst(){
+        int val = head.value;
+        head = head.next;
+        if(head == null){
+            tail = null;
+        }
+        size--;
+        return val;
+
+    }
+
+    public int deleteLast(){
+        if(size<=1){
+            return deleteFirst();
+        }
+        Node secondLast = get(size - 2);
+        int val = tail.value;
+        tail = secondLast;
+        tail.next = null;
+        return val;
+
+    }
+
+    public int delete(int index){
+        if(index==0){
+            return deleteFirst();
+        }
+        if(index == size - 1){
+            return deleteLast();
+        }
+        Node prev = get(index - 1){
+            int val = prev.next.value;
+            prev.next = prev.next.next;
+            return val;
+        }
+
+    }
+    public Node get(int index){
+        Node node = head;
+        for(int i = 0; i<index; i++){
+            node = node.next;
+        }
+        return node;
+    }
+
+
     public void display(){
         Node temp = head;
         while(temp!=null){
@@ -89,8 +136,14 @@ public static void main(String[] args){
     linkedList.insertLast(89);
     linkedList.display();
     linkedList.insert(100, 3);
+    System.out.println(linkedList.deleteFirst());
 
     linkedList.display();
+    System.out.println(linkedList.deleteLast());
+    linkedList.display();
+    System.out.println(linkedList.delete(2));
+    linkedList.display();
+
 
 
     
